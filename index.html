@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Distort Content on Scroll</title>
+</head>
+<body>
+    <div class="smooth-scroll-wrapper">
+        <div class="content">
+            <section class="distort">
+                <div>
+                    <img src="assets/Alabados sean los michis.jpg" alt="">
+                    <h1> The Cat GOD</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ex ab impedit maiores quaerat
+                        quidem aut, aperiam atque voluptatum suscipit explicabo. Atque, esse iusto dele
+                        ctus eligendi animi similique nisi inventore!
+                    </p>
+                </div>
+
+                <div>
+                    <img src="assets/Aesthetics_ A Guide - Art Aesthetic - Phone Wallpaper.jpg" alt="">
+                    <h1> The Cat GOD</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ex ab impedit maiores quaerat
+                        quidem aut, aperiam atque voluptatum suscipit explicabo. Atque, esse iusto dele
+                        ctus eligendi animi similique nisi inventore!
+                    </p>
+                </div>
+
+                <div>
+                    <img src="assets/fa2ab0a1-17af-45ee-9bd9-22f23794eb31.jpg" alt="">
+                    <h1> The Cat GOD</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ex ab impedit maiores quaerat
+                        quidem aut, aperiam atque voluptatum suscipit explicabo. Atque, esse iusto dele
+                        ctus eligendi animi similique nisi inventore!
+                    </p>
+                </div>
+
+                <div>
+                    <img src="assets/Lemongrab Painting by Valashard on DeviantArt.jpg" alt="">
+                    <h1> The Cat GOD</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit ex ab impedit maiores quaerat
+                        quidem aut, aperiam atque voluptatum suscipit explicabo. Atque, esse iusto dele
+                        ctus eligendi animi similique nisi inventore!
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+      
+
+    <script>
+      const body = document.body,
+                scrollWrap = document.getElementsByClassName("smooth-scroll-wrapper")[0],
+                height = scrollWrap.getBoundingClientRect().height - 1,
+                speed = 0.1;
+
+            var offset = 0;
+
+            body.style.height = Math.floor(height) + "px";
+
+            function smoothScroll() {
+                offset += (window.pageYOffset - offset) * speed;
+
+                var scroll = "translateY(-" + offset + "px) translateZ(0)";
+                scrollWrap.style.transform = scroll;
+
+                callScroll = requestAnimationFrame(smoothScroll);
+            }
+
+            smoothScroll();
+            const content = document.querySelector("section");
+            let currentPos = window.pageYOffset;
+
+            const callDistort = function () {
+                const newPos = window.pageYOffset;
+                const diff = newPos - currentPos;
+                const speed = diff * 0.25;
+
+                content.style.transform = "skewY(" + speed + "deg)";
+                currentPos = newPos;
+                requestAnimationFrame(callDistort);
+            };
+
+            callDistort();
+    </script>
+</body>
+</html>
